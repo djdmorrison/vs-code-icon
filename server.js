@@ -17,8 +17,9 @@ app.use(bodyParser.json({
 app.use(methodOverride());
 
 // listen (start app with node server.js) ======================================
-app.listen(5000);
-console.log("App listening on port 5000");
+var port = process.env.PORT || 8080;
+app.listen(port);
+console.log("app listening on " + port)
 
 app.get('/api/test', function (req, res) {
     res.send('hi');
