@@ -1,95 +1,84 @@
-// server.js
-
-// set up ========================
-var express = require('express');
-var app = express(); // create our app w/ express
-var morgan = require('morgan');             // log requests to the console (express4)
-var bodyParser = require('body-parser'); // pull information from HTML POST (express4)
-var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
-
+const express = require('express');
+const app = express();
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 const icongen = require('icon-gen');
-const fs = require('fs-extra')
-var zipFolder = require('zip-folder');
-var uniqid = require('uniqid');
+const fs = require('fs-extra');
+const zipFolder = require('zip-folder');
+const uniqid = require('uniqid');
 
-
-app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
-app.use(morgan('dev'));                                         // log every request to the console
+app.use(express.static(__dirname + '/public'));
+app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({
     'extended': 'true'
-})); // parse application/x-www-form-urlencoded
-app.use(bodyParser.json()); // parse application/json
+}));
+app.use(bodyParser.json());
 app.use(bodyParser.json({
     type: 'application/vnd.api+json'
-})); // parse application/vnd.api+json as json
+}));
 app.use(methodOverride());
 
-// listen (start app with node server.js) ======================================
-var port = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 
-app.get('/api/download/:dir', function(req, res) {
-    tempDir = 'tmp/' + req.params.dir;
+app.get('/api/download/:dir', (req, res) => {
+    const tempDir = 'tmp/' + req.params.dir;
     res.download(tempDir + '/icons.zip');
 
     fs.remove(tempDir, () => {});
-})
+});
 
-app.post('/api/convert', function (req, res) {
+app.post('/api/convert', (req, res) => {
     console.log("Converting");
     console.log(req.body.image);
 
-    tmp_name = uniqid()
-    dir = './tmp/' + tmp_name
-    src = dir + '/src'
-    dist = dir + '/dist'
+    const tmp_name = uniqid();
+    const dir = './tmp/' + tmp_name;
+    const src = dir + '/src';
+    const dist = dir + '/dist';
 
     fs.ensureDir(src, err => {
-        console.log(err) // => null
-        
+        console.log(err);
+
         fs.ensureDir(dist, err => {
-            console.log(err) // => null
-            
-            fs.writeFile(src + "/image.svg", req.body.image, function(err) {
-                if(err) {
+            console.log(err);
+
+            fs.writeFile(src + "/image.svg", req.body.image, err => {
+                if (err) {
                     return console.log(err);
                 }
-            
+
                 console.log("The file was saved!");
-        
+
                 const options = {
                     report: true
                 };
-            
-                icongen(src + '/image.svg', dist, options)
-                    .then((results) => {
-                        console.log(results)
-                        zipFolder(dist, dir + '/icons.zip', function(err) {
-                            if(err) {
-                                console.log('oh no!', err);
-                                res.send('error');
-                            } else {
-                                console.log('EXCELLENT');
-                                res.send(tmp_name);
-                            }
-                        });
-        
-                        
-                    })
-                    .catch((err) => {
-                        console.error(err)
-                        res.send('error');
+
+                icongen(src + '/image.svg', dist, options).then(results => {
+                    console.log(results);
+                    zipFolder(dist, dir + '/icons.zip', err => {
+                        if (err) {
+                            console.log('oh no!', err);
+                            res.send('error');
+                        } else {
+                            console.log('EXCELLENT');
+                            res.send(tmp_name);
+                        }
                     });
-            }); 
-          });
-      });
 
-
-    
+                })
+                .catch(err => {
+                    console.error(err);
+                    res.send('error');
+                });
+            });
+        });
+    });
 });
 
-app.get('*', function(req, res) {
-    res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+app.get('*', function (req, res) {
+    res.sendfile('./public/index.html');
 });
 
 app.listen(port);
-console.log("app listening on " + port)
+console.log("app listening on " + port);

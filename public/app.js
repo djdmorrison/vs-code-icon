@@ -5,21 +5,19 @@ angular.module("myApp", []).controller("myCtrl", function ($scope, $http) {
 
     $scope.submit = function () {
         $scope.generating = true;
-        console.log("Submit");
+
         var image = document.getElementById("image");
         image = image.outerHTML.replace('{{ background }}', $scope.background);
         image = image.replace(/{{ accent }}/g, $scope.accent);
 
-        console.log(image);
-
-        $http.post('/api/convert', {'image': image}).then(function(res) {
+        $http.post('/api/convert', {'image': image}).then(res => {
             $scope.generating = false;
 
             name = res.data;
             window.location.href = '/api/download/' + name;
-        }, function(err) {
+        }, err => {
             console.log(err);
         });
-    }
+    };
 
 });

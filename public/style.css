@@ -1,0 +1,64 @@
+body {
+    font-family: sans-serif;
+    font-weight: 300;
+    background: #555559;
+    font-size: 1.2em;
+    color: white;
+}
+
+label {
+    width: 100px;
+    margin-bottom: 20px;
+    display: inline-block;
+    color: white;
+    text-align: right;
+    margin-right: 20px;
+}
+
+.container {
+    width: 250px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+svg {
+    margin-bottom: 50px;
+    height: 256px;
+    width: 256px;
+}
+
+input {
+    outline: none;
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+    box-shadow: none;
+    border: 2px solid white;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.submit {
+    color: white;
+    text-align: center;
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid white;
+    transition: 200ms ease background, 200ms ease color;
+    background: transparent;
+    width: 150px;
+    height: 50px;
+    font-size: 1.05em;
+    font-weight: 300;
+    margin: 20px auto 0;
+}
+
+.submit:hover, .submit:disabled  {
+    background: white;
+    color: #555559;
+}
+
+.submit:disabled {
+    cursor: initial;
+}
