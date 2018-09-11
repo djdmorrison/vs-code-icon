@@ -13,10 +13,10 @@ angular.module("myApp", []).controller("myCtrl", function ($scope, $http) {
         console.log(image);
 
         $http.post('/api/convert', {'image': image}).then(function(res) {
-            console.log(res);
             $scope.generating = false;
 
-            window.location.href = '/api/download';
+            name = res.data;
+            window.location.href = '/api/download/' + name;
         }, function(err) {
             console.log(err);
         });

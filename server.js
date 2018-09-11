@@ -8,8 +8,10 @@ var bodyParser = require('body-parser'); // pull information from HTML POST (exp
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 
 const icongen = require('icon-gen');
-var fs = require('fs');
+const fs = require('fs-extra')
 var zipFolder = require('zip-folder');
+var uniqid = require('uniqid');
+
 
 app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
 app.use(morgan('dev'));                                         // log every request to the console
@@ -25,45 +27,64 @@ app.use(methodOverride());
 // listen (start app with node server.js) ======================================
 var port = process.env.PORT || 8080;
 
-app.get('/api/download', function(req, res) {
-    res.download('./icons.zip');
+app.get('/api/download/:dir', function(req, res) {
+    tempDir = 'tmp/' + req.params.dir;
+    res.download(tempDir + '/icons.zip');
+
+    fs.remove(tempDir, () => {});
 })
 
 app.post('/api/convert', function (req, res) {
     console.log("Converting");
     console.log(req.body.image);
 
-    fs.writeFile("src/image.svg", req.body.image, function(err) {
-        if(err) {
-            return console.log(err);
-        }
-    
-        console.log("The file was saved!");
+    tmp_name = uniqid()
+    dir = './tmp/' + tmp_name
+    src = dir + '/src'
+    dist = dir + '/dist'
 
-        const options = {
-            report: true
-        };
-    
-        icongen('./src/image.svg', './dist', options)
-            .then((results) => {
-                console.log(results)
-                zipFolder('./dist', './icons.zip', function(err) {
-                    if(err) {
-                        console.log('oh no!', err);
+    fs.ensureDir(src, err => {
+        console.log(err) // => null
+        
+        fs.ensureDir(dist, err => {
+            console.log(err) // => null
+            
+            fs.writeFile(src + "/image.svg", req.body.image, function(err) {
+                if(err) {
+                    return console.log(err);
+                }
+            
+                console.log("The file was saved!");
+        
+                const options = {
+                    report: true
+                };
+            
+                icongen(src + '/image.svg', dist, options)
+                    .then((results) => {
+                        console.log(results)
+                        zipFolder(dist, dir + '/icons.zip', function(err) {
+                            if(err) {
+                                console.log('oh no!', err);
+                                res.send('error');
+                            } else {
+                                console.log('EXCELLENT');
+                                res.send(tmp_name);
+                            }
+                        });
+        
+                        
+                    })
+                    .catch((err) => {
+                        console.error(err)
                         res.send('error');
-                    } else {
-                        console.log('EXCELLENT');
-                        res.download('icons.zip');
-                    }
-                });
+                    });
+            }); 
+          });
+      });
 
-                
-            })
-            .catch((err) => {
-                console.error(err)
-                res.send('error');
-            });
-    }); 
+
+    
 });
 
 app.get('*', function(req, res) {
