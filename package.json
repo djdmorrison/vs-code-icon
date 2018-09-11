@@ -21,6 +21,9 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "icon-gen": "^1.2.3",
-    "method-override": "^3.0.0"
+    "method-override": "^3.0.0",
+    "morgan": "^1.9.1",
+    "tmp": "0.0.33",
+    "zip-folder": "^1.0.0"
   }
 }

@@ -1,65 +1,3 @@
-<!DOCTYPE html>
-<html lang="en-US">
-
-<head>
-    <style>
-        body {
-  font-family: sans-serif;
-  font-weight: 300;
-  background: #555559;
-  font-size: 1.2em;
-}
-label {
-  width: 100px;
-  margin-bottom: 20px;
-  display: inline-block;
-  color: white;
-  text-align: right;
-  margin-right: 20px;
-}
-.container {
-  width: 250px;
-  margin: 50px auto;
-  text-align: center;
-}
-svg {
-  margin-bottom: 50px;
-  height: 256px;
-  width: 256px;
-}
-input {
-  outline: none;
-  width: 30px;
-  height: 30px;
-  padding: 0px;
-  box-shadow: none;
-  border: 2px solid white;
-  vertical-align: middle;
-  cursor: pointer;
-}
-a {
-  color: white;
-  text-align: center;
-  display: block;
-  margin-bottom: 50px;
-  cursor: pointer;
-}
-a:hover {
-      text-decoration: underline;
-  }
-  p {
-      color: white;
-  }
-</style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.js"></script>
-    <script src="./app.js"></script>
-</head>
-
-<body>
-    <div ng-app="myApp" ng-controller="myCtrl" class="container">
-        <a ng-click="submit()">Submit</a>
-        <p ng-if="generating">Generating...</p>
-        <?xml version="1.0" encoding="UTF-8"?>
 <svg id="image" width="1024px" height="1024px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
     <title>cobalt2</title>
@@ -99,39 +37,27 @@ a:hover {
             <g id="icon" transform="translate(38.000000, -2.000000)">
                 <g id="Rectangle" transform="translate(440.163272, 507.734112) rotate(-9.200000) translate(-440.163272, -507.734112) ">
                     <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
-                    <use fill="{{ background }}" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <use fill="#ffffff" fill-rule="evenodd" xlink:href="#path-2"></use>
                     <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
                 </g>
                 <g id="Path-2">
-                    <use fill="{{ accent }}" xlink:href="#path-4"></use>
+                    <use fill="#049fd9" xlink:href="#path-4"></use>
                     <use fill="#E0E0E0" style="mix-blend-mode: multiply;" xlink:href="#path-4"></use>
                 </g>
                 <g id="Path-4">
-                    <use fill="{{ accent }}" xlink:href="#path-6"></use>
+                    <use fill="#049fd9" xlink:href="#path-6"></use>
                     <use fill="url(#linearGradient-5)" xlink:href="#path-6"></use>
                 </g>
                 <g id="Path-3">
                     <use fill="black" fill-opacity="1" filter="url(#filter-8)" xlink:href="#path-7"></use>
-                    <use fill="{{ accent }}" fill-rule="evenodd" xlink:href="#path-7"></use>
+                    <use fill="#049fd9" fill-rule="evenodd" xlink:href="#path-7"></use>
                 </g>
                 <g id="Path-6">
-                    <use fill="{{ accent }}" xlink:href="#path-10"></use>
+                    <use fill="#049fd9" xlink:href="#path-10"></use>
                     <use fill="url(#linearGradient-9)" xlink:href="#path-10"></use>
                 </g>
-                <polygon id="Path-5" fill="{{ accent }}" points="646.648836 91.6074145 848.950692 139.549784 948.710933 748.518353 769.394019 858.605269"></polygon>
+                <polygon id="Path-5" fill="#049fd9" points="646.648836 91.6074145 848.950692 139.549784 948.710933 748.518353 769.394019 858.605269"></polygon>
             </g>
         </g>
     </g>
 </svg>
-        <div>
-            <label for="background">Background:</label>
-            <input type="color" id="background" name="background" ng-model="background" />
-        </div>
-        <div>
-            <label for="accent">Accent:</label>
-            <input type="color" id="accent" name="accent" ng-model="accent" />
-        </div>
-    </div>
-</body>
-
-</html>
