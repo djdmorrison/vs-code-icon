@@ -117,6 +117,7 @@ input::-webkit-color-swatch, input ::-moz-color-swatch {
 
 .submit:disabled {
     cursor: initial;
+    background: rgba(98,39,116,1);
 }
 
 .margin-bot-sm {
