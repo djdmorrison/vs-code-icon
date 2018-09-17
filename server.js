@@ -7,6 +7,8 @@ const icongen = require('icon-gen');
 const fs = require('fs-extra');
 const zipFolder = require('zip-folder');
 const uniqid = require('uniqid');
+const exec = require('child-process-promise').exec;
+
 
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
@@ -54,23 +56,24 @@ app.post('/api/convert', (req, res) => {
                     report: true
                 };
 
-                icongen(src + '/image.svg', dist, options).then(results => {
-                    console.log(results);
-                    zipFolder(dist, dir + '/icons.zip', err => {
-                        if (err) {
-                            console.log('oh no!', err);
-                            res.send('error');
-                        } else {
-                            console.log('EXCELLENT');
-                            res.send(tmp_name);
-                        }
-                    });
+                const cmd = 'icon-gen -i ' + src + '/image.svg -o ' + dist + ' -r';
 
-                })
-                .catch(err => {
-                    console.error(err);
-                    res.send('error');
-                });
+                exec(cmd)
+                    .then(function (result) {
+                        zipFolder(dist, dir + '/icons.zip', err => {
+                            if (err) {
+                                console.log('oh no!', err);
+                                res.send('error');
+                            } else {
+                                console.log('EXCELLENT');
+                                res.send(tmp_name);
+                            }
+                        });
+                    })
+                    .catch(function (err) {
+                        console.error(err);
+                        res.send('error');
+                    });
             });
         });
     });

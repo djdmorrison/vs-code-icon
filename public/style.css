@@ -118,6 +118,11 @@ input::-webkit-color-swatch, input ::-moz-color-swatch {
 .submit:disabled {
     cursor: initial;
     background: rgba(98,39,116,1);
+    box-shadow: 0 3px 5px 0 rgba(0,0,0,0.15);
+}
+
+.submit:focus {
+    outline: none;
 }
 
 .margin-bot-sm {

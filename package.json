@@ -19,6 +19,7 @@
   "homepage": "https://github.com/djdmorrison/vs-code-icon#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "child-process-promise": "^2.2.1",
     "express": "^4.16.3",
     "fs-extra": "^7.0.0",
     "icon-gen": "^1.2.3",
