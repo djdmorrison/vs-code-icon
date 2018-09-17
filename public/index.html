@@ -27,17 +27,15 @@
             <div class="inner">
                 <p>Choose your favourite colours below, press download and follow <a href="https://github.com/dhanishgajjar/vscode-icons#how-to-install" target="_blank">these instructions</a> to install for your OS</p>
             
-                <div class="colour-containers">
-                    <div class="colour-container">
-                        <p>Background</p>
-                        <input type="color" name="background" ng-model="background" />
-                        <p class="text-muted">{{ background }}</p>
-                    </div>
-                    <div class="colour-container">
-                        <p>Accent</p>
-                        <input type="color" name="accent" ng-model="accent" />
-                        <p class="text-muted">{{ accent }}</p>
-                    </div>
+                <div class="colour-container">
+                    <p>Background</p>
+                    <input type="color" name="background" ng-model="background" />
+                    <p class="text-muted">{{ background }}</p>
+                </div>
+                <div class="colour-container">
+                    <p>Accent</p>
+                    <input type="color" name="accent" ng-model="accent" />
+                    <p class="text-muted">{{ accent }}</p>
                 </div>
 
                 <button ng-disabled="generating" ng-click="submit()" class="submit">{{ generating ? 'Generating...' : 'Download' }}</button>

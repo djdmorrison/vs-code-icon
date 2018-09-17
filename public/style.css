@@ -42,14 +42,14 @@ a:hover{
 .container {
     width: 600px;
     height: 0px;
-    margin: 100px auto 0;
+    margin: 50px auto 0;
     text-align: center;
 }
 
 .panel {
     background: white;
     position: relative;
-    top: -70px;
+    top: -71px;
     padding: 100px 0 20px;
     border-radius: 10px 10px 0 0;
 }
@@ -60,18 +60,15 @@ a:hover{
 }
 
 svg {
-    margin-top: 50px;
+    margin: 50px 0 0;
     height: 256px;
     width: 256px;
     position: relative;
     z-index: 99;
 }
 
-.colour-containers {
-    margin-top: 25px;
-}
-
 .colour-container {
+    margin-top: 20px;
     display: inline-block;
 }
 
