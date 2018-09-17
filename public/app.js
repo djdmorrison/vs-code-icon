@@ -1,6 +1,6 @@
 angular.module("myApp", []).controller("myCtrl", function ($scope, $http) {
-    $scope.background = "#ffffff";
-    $scope.accent = "#049fd9";
+    $scope.background = "#2C4757";
+    $scope.accent = "#FFC600";
     $scope.generating = false;
 
     $scope.submit = function () {
