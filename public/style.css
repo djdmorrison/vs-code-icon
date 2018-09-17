@@ -123,3 +123,8 @@ input::-webkit-color-swatch, input ::-moz-color-swatch {
 .margin-bot-sm {
     margin-bottom: 10px;
 }
+
+.loader-small div {
+    width: 10px;
+    height: 10px;
+}

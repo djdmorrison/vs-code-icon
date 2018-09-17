@@ -5,6 +5,7 @@
     <title>VS Code Icon Generator</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
     <link rel="stylesheet" href="./reset.css" type="text/css"></style>
+    <link rel="stylesheet" href="./loaders.min.css" type="text/css"></style>
     <link rel="stylesheet" href="./style.css" type="text/css"></style>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -36,7 +37,14 @@
                 <p class="text-muted">{{ accent }}</p>
             </div>
 
-            <button ng-disabled="generating" ng-click="submit()" class="submit">{{ generating ? 'Generating...' : 'Download' }}</button>
+            <button ng-disabled="generating" ng-click="submit()" class="submit">
+                {{ generating ? '' : 'Download' }}
+                <span ng-if="generating" class="loader-inner loader-small ball-pulse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </span>
+            </button>
 
             <p class="text-small margin-bot-sm">Created by <a href="http://www.djdmorrison.co.uk" target="_blank">djdmorrison</a> - Code on <a href="https://github.com/djdmorrison/vs-code-icon" target="_blank">GitHub</a></p>
             <p class="text-small">Made for <a href="https://github.com/dhanishgajjar/vscode-icons" target="_blank">dhanishgajjar/vscode-icons</a></p>
