@@ -5,17 +5,22 @@ body {
     color: white;
     font-size: 0.9rem;
 }
+@media screen and (max-device-width : 600px) {
+    body {
+        font-size: 0.7em;
+    }
+}
 h1, h2 {
     margin: 0;
 }
 h1 {
-    font-size: 44px;
+    font-size: 2.8em;
     font-weight: bold;
     line-height: 48px;
 }
 h2 {
     margin-top: 15px;
-    font-size: 21px;
+    font-size: 1.3em;
     font-weight: normal;
 }
 p {
@@ -40,8 +45,7 @@ a:hover{
 }
 
 .container {
-    width: 600px;
-    height: 0px;
+    max-width: 600px;
     margin: 50px auto 0;
     text-align: center;
 }
@@ -53,10 +57,16 @@ a:hover{
     padding: 100px 0 20px;
     border-radius: 10px;
 }
+@media screen and (max-device-width : 600px) {
+    .panel {
+        border-radius: 0px;
+    }
+}
 
 .inner {
     max-width: 450px;
     margin: 0 auto;
+    padding: 0 50px;
 }
 
 svg {
@@ -75,7 +85,11 @@ svg {
 .colour-container:first-of-type {
     margin-right: 20px;
 }
-
+@media screen and (max-device-width : 600px) {
+    .colour-container:first-of-type {
+        margin-right: 0px;
+    }
+}
 .colour-container p {
     margin: 5px 0;
 }
