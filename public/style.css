@@ -51,7 +51,7 @@ a:hover{
     position: relative;
     top: -71px;
     padding: 100px 0 20px;
-    border-radius: 10px 10px 0 0;
+    border-radius: 10px;
 }
 
 .inner {
@@ -80,18 +80,10 @@ svg {
     margin: 5px 0;
 }
 
-input {
-    outline: none;
-    border: none;
-    width: 100px;
+.color-picker-wrapper.color-picker-swatch-only .input-group .input-group-addon {
     height: 100px;
-    padding: 0px;
-    cursor: pointer;
-}
-input::-webkit-color-swatch, input ::-moz-color-swatch {
+    width: 100px;
     border: none;
-    box-shadow: none;
-    outline: none;
 }
 
 .submit {
@@ -108,6 +100,7 @@ input::-webkit-color-swatch, input ::-moz-color-swatch {
     margin: 20px auto;
     border-radius: 10px;
     box-shadow: 0 3px 5px 0 rgba(0,0,0,0.15);
+    border: none;
 }
 
 .submit:hover {

@@ -1,6 +1,6 @@
-angular.module("myApp", []).controller("myCtrl", function ($scope, $http) {
-    $scope.background = "#2C4757";
-    $scope.accent = "#FFC600";
+angular.module("myApp", ['color.picker']).controller("myCtrl", function ($scope, $http) {
+    $scope.background = "2C4757";
+    $scope.accent = "FFC600";
     $scope.generating = false;
 
     $scope.submit = function () {
@@ -18,6 +18,12 @@ angular.module("myApp", []).controller("myCtrl", function ($scope, $http) {
         }, err => {
             console.log(err);
         });
+    };
+
+    $scope.pickerOptions = {
+        alpha: false,
+        format: 'hex',
+        swatchOnly: true
     };
 
 });
