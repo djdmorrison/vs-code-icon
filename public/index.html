@@ -14,7 +14,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <title>VS Code Icon Generator</title>
+    <title>Icon Generator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-color-picker/3.4.8/angularjs-color-picker.min.css" rel="stylesheet">
@@ -26,47 +26,60 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.1/tinycolor.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-color-picker/3.4.8/angularjs-color-picker.min.js"></script>
-    <script src="./jscolor.js"></script>
     <script src="./app.js"></script>
 </head>
 
 <body></body>
     <div ng-app="myApp" ng-controller="myCtrl" class="container">
         <header>
-            <h1>Visual Studio Code</h1>
+            <h1>{{ icons[icon.index ].name }}</h1>
             <h1>Icon Generator</h1>
-            <h2>Personalize your code development</h2>
+            <h2>Personalize your {{ icons[icon.index ].description }}</h2>
         </header>
 
-        <svg id="image" width="1024" height="1024" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient x1="0%" y1="0%" y2="100%" id="a"><stop stop-color="#FFF" stop-opacity=".18" offset="0%"/><stop stop-color="gray" stop-opacity=".08" offset="48.7624%"/><stop stop-opacity=".1828" offset="100%"/></linearGradient><linearGradient x1="5.2339%" y1="3.6826%" x2="50%" y2="50%" id="b"><stop stop-opacity=".09" offset="0%"/><stop stop-opacity="0" offset="100%"/></linearGradient><linearGradient x1="100%" y1="0%" x2="50%" y2="5.9045%" id="c"><stop stop-opacity=".3" offset="0%"/><stop stop-opacity="0" offset="100%"/></linearGradient></defs><g fill="none" fill-rule="evenodd"><rect x=".7604" y=".6736" width="751.8687" height="914.1676" rx="23.7321" fill="#000" fill-rule="nonzero" transform="rotate(-9.2 722.7128 81.2752)"/><rect x=".7604" y=".6736" width="751.8687" height="914.1676" rx="23.7321" fill="#{{ background }}" transform="rotate(-9.2 722.7128 81.2752)"/><rect x=".7604" y=".6736" width="751.8687" height="914.1676" rx="23.7321" fill="url(#a)" transform="rotate(-9.2 722.7128 81.2752)"/><g fill-rule="nonzero"><path d="M465.5456 235.3159l65.944 424.5095c.369 2.3757 2.5953 4.0026 4.9724 3.6338a4.3573 4.3573 0 0 0 1.697-.6461l92.4467-59.7412a4.3522 4.3522 0 0 0 1.937-4.3364l-53.5781-338.1973c-.2724-1.7191-1.5431-3.1108-3.2312-3.5388l-104.8126-26.5709c-2.3318-.591-4.7015.8189-5.293 3.1493a4.3507 4.3507 0 0 0-.0822 1.7381z" fill="#{{ accent }}"/><path d="M465.5456 237.3336l65.944 424.5095c.369 2.3757 2.5953 4.0026 4.9724 3.6338a4.3573 4.3573 0 0 0 1.697-.6461l92.4467-59.7412a4.3522 4.3522 0 0 0 1.937-4.3364l-53.5781-338.1973c-.2724-1.7191-1.5431-3.1108-3.2312-3.5388l-104.8126-26.5709c-2.3318-.591-4.7015.8189-5.293 3.1493a4.3507 4.3507 0 0 0-.0822 1.7381z" fill="#000" fill-opacity=".1974"/></g><g fill-rule="nonzero"><path d="M629.6505 603.2612l-97.4474 63.1303a4.3579 4.3579 0 0 1-4.9277-.1297L154.6898 396.0135c-1.9469-1.4122-2.3797-4.1343-.9667-6.08a4.355 4.355 0 0 1 1.3885-1.2366l33.663-18.9381a4.358 4.358 0 0 1 4.1412-.0714l436.3699 226.056c2.1357 1.1065 2.9697 3.7337 1.8626 5.8682a4.3541 4.3541 0 0 1-1.4978 1.6496z" fill="#{{ accent }}"/><path d="M477.1836 234.9892l-97.4474 63.1303a4.3579 4.3579 0 0 1-4.9277-.1297L2.2229 27.7415c-1.9469-1.4122-2.3797-4.1343-.9667-6.08a4.355 4.355 0 0 1 1.3885-1.2366l33.663-18.9381a4.358 4.358 0 0 1 4.1412-.0714l436.3699 226.056c2.1357 1.1065 2.9697 3.7337 1.8626 5.8682a4.3541 4.3541 0 0 1-1.4978 1.6496z" fill="url(#b)" transform="translate(152.4669 368.272)"/></g><path d="M576.9535 264.9728l-344.7388 349.841a4.3573 4.3573 0 0 1-3.6353 1.266l-39.1736-4.816c-2.3876-.2935-4.085-2.4659-3.7913-4.8521a4.3517 4.3517 0 0 1 .8396-2.0818l279.1026-371.6042c1.055-1.4047 2.8514-2.0381 4.5549-1.6062l104.8096 26.5793c2.3318.5913 3.7423 2.9598 3.1507 5.2901a4.3525 4.3525 0 0 1-1.1185 1.9839z" fill="#000" fill-rule="nonzero"/><path d="M576.9535 264.9728l-344.7388 349.841a4.3573 4.3573 0 0 1-3.6353 1.266l-39.1736-4.816c-2.3876-.2935-4.085-2.4659-3.7913-4.8521a4.3517 4.3517 0 0 1 .8396-2.0818l279.1026-371.6042c1.055-1.4047 2.8514-2.0381 4.5549-1.6062l104.8096 26.5793c2.3318.5913 3.7423 2.9598 3.1507 5.2901a4.3525 4.3525 0 0 1-1.1185 1.9839z" fill="#{{ accent }}"/><g fill-rule="nonzero"><path d="M161.6081 762.1549l612.2916 100.7056 181.3505-111.6693z" fill="#{{ accent }}"/><path d="M.0561 11.5224L612.3477 112.228 793.6982.5587z" fill="url(#c)" transform="translate(161.552 750.6325)"/></g><path fill="#{{ accent }}" fill-rule="nonzero" d="M649.778 88.4197l204.2164 48.3675 100.7043 614.3683-181.0139 111.063z"/></g></svg>        <div class="panel">
-           
-        <div class="inner">
-            <p>Choose your favourite colours below, press download and follow <a href="https://github.com/dhanishgajjar/vscode-icons#how-to-install" target="_blank">these instructions</a> to install for your OS</p>
-        
-            <div class="colour-container">
-                <p>Background</p>
-                <color-picker ng-model="background" options="pickerOptions"></color-picker>
-                <p class="text-muted">#{{ background }}</p>
-            </div>
-            <div class="colour-container">
-                <p>Accent</p>
-                <color-picker ng-model="accent" options="pickerOptions"></color-picker>
-                <p class="text-muted">#{{ accent }}</p>
-            </div>
-
-            <button ng-disabled="generating" ng-click="submit()" class="submit">
-                {{ generating ? '' : 'Download' }}
-                <span ng-if="generating" class="loader-inner loader-small ball-pulse">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </span>
+        <div class="options">
+            <button ng-disabled="generating" class="option option-left" ng-if="icon.index > 0" ng-click="icon.index = icon.index - 1">
+                <div class="arrow arrow-left"></div>
+                <p class="text-white">VS Code</p>
             </button>
 
-            <p class="text-small margin-bot-sm">Created by <a href="http://www.djdmorrison.co.uk" target="_blank">djdmorrison</a> - Code on <a href="https://github.com/djdmorrison/vs-code-icon" target="_blank">GitHub</a></p>
-            <p class="text-small">Made for <a href="https://github.com/dhanishgajjar/vscode-icons" target="_blank">dhanishgajjar/vscode-icons</a></p>
+            <button ng-disabled="generating" class="option option-right" ng-if="icon.index < icons.length - 1" ng-click="icon.index = icon.index + 1">
+                <div class="arrow arrow-right"></div>
+                <p class="text-white">Spotify</p>
+            </button>
         </div>
+
+        <svg ng-if="icon.index == 0" id="image" width="1024" height="1024" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient x1="0%" y1="0%" y2="100%" id="a"><stop stop-color="#FFF" stop-opacity=".18" offset="0%"/><stop stop-color="gray" stop-opacity=".08" offset="48.7624%"/><stop stop-opacity=".1828" offset="100%"/></linearGradient><linearGradient x1="5.2339%" y1="3.6826%" x2="50%" y2="50%" id="b"><stop stop-opacity=".09" offset="0%"/><stop stop-opacity="0" offset="100%"/></linearGradient><linearGradient x1="100%" y1="0%" x2="50%" y2="5.9045%" id="c"><stop stop-opacity=".3" offset="0%"/><stop stop-opacity="0" offset="100%"/></linearGradient></defs><g fill="none" fill-rule="evenodd"><rect x=".7604" y=".6736" width="751.8687" height="914.1676" rx="23.7321" fill="#000" fill-rule="nonzero" transform="rotate(-9.2 722.7128 81.2752)"/><rect x=".7604" y=".6736" width="751.8687" height="914.1676" rx="23.7321" fill="#{{ background }}" transform="rotate(-9.2 722.7128 81.2752)"/><rect x=".7604" y=".6736" width="751.8687" height="914.1676" rx="23.7321" fill="url(#a)" transform="rotate(-9.2 722.7128 81.2752)"/><g fill-rule="nonzero"><path d="M465.5456 235.3159l65.944 424.5095c.369 2.3757 2.5953 4.0026 4.9724 3.6338a4.3573 4.3573 0 0 0 1.697-.6461l92.4467-59.7412a4.3522 4.3522 0 0 0 1.937-4.3364l-53.5781-338.1973c-.2724-1.7191-1.5431-3.1108-3.2312-3.5388l-104.8126-26.5709c-2.3318-.591-4.7015.8189-5.293 3.1493a4.3507 4.3507 0 0 0-.0822 1.7381z" fill="#{{ accent }}"/><path d="M465.5456 237.3336l65.944 424.5095c.369 2.3757 2.5953 4.0026 4.9724 3.6338a4.3573 4.3573 0 0 0 1.697-.6461l92.4467-59.7412a4.3522 4.3522 0 0 0 1.937-4.3364l-53.5781-338.1973c-.2724-1.7191-1.5431-3.1108-3.2312-3.5388l-104.8126-26.5709c-2.3318-.591-4.7015.8189-5.293 3.1493a4.3507 4.3507 0 0 0-.0822 1.7381z" fill="#000" fill-opacity=".1974"/></g><g fill-rule="nonzero"><path d="M629.6505 603.2612l-97.4474 63.1303a4.3579 4.3579 0 0 1-4.9277-.1297L154.6898 396.0135c-1.9469-1.4122-2.3797-4.1343-.9667-6.08a4.355 4.355 0 0 1 1.3885-1.2366l33.663-18.9381a4.358 4.358 0 0 1 4.1412-.0714l436.3699 226.056c2.1357 1.1065 2.9697 3.7337 1.8626 5.8682a4.3541 4.3541 0 0 1-1.4978 1.6496z" fill="#{{ accent }}"/><path d="M477.1836 234.9892l-97.4474 63.1303a4.3579 4.3579 0 0 1-4.9277-.1297L2.2229 27.7415c-1.9469-1.4122-2.3797-4.1343-.9667-6.08a4.355 4.355 0 0 1 1.3885-1.2366l33.663-18.9381a4.358 4.358 0 0 1 4.1412-.0714l436.3699 226.056c2.1357 1.1065 2.9697 3.7337 1.8626 5.8682a4.3541 4.3541 0 0 1-1.4978 1.6496z" fill="url(#b)" transform="translate(152.4669 368.272)"/></g><path d="M576.9535 264.9728l-344.7388 349.841a4.3573 4.3573 0 0 1-3.6353 1.266l-39.1736-4.816c-2.3876-.2935-4.085-2.4659-3.7913-4.8521a4.3517 4.3517 0 0 1 .8396-2.0818l279.1026-371.6042c1.055-1.4047 2.8514-2.0381 4.5549-1.6062l104.8096 26.5793c2.3318.5913 3.7423 2.9598 3.1507 5.2901a4.3525 4.3525 0 0 1-1.1185 1.9839z" fill="#000" fill-rule="nonzero"/><path d="M576.9535 264.9728l-344.7388 349.841a4.3573 4.3573 0 0 1-3.6353 1.266l-39.1736-4.816c-2.3876-.2935-4.085-2.4659-3.7913-4.8521a4.3517 4.3517 0 0 1 .8396-2.0818l279.1026-371.6042c1.055-1.4047 2.8514-2.0381 4.5549-1.6062l104.8096 26.5793c2.3318.5913 3.7423 2.9598 3.1507 5.2901a4.3525 4.3525 0 0 1-1.1185 1.9839z" fill="#{{ accent }}"/><g fill-rule="nonzero"><path d="M161.6081 762.1549l612.2916 100.7056 181.3505-111.6693z" fill="#{{ accent }}"/><path d="M.0561 11.5224L612.3477 112.228 793.6982.5587z" fill="url(#c)" transform="translate(161.552 750.6325)"/></g><path fill="#{{ accent }}" fill-rule="nonzero" d="M649.778 88.4197l204.2164 48.3675 100.7043 614.3683-181.0139 111.063z"/></g></svg>
+        <svg ng-if="icon.index == 1" id="image" width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient x1="50%" y1="100%" x2="50%" y2="0%" id="a"><stop stop-opacity=".15" offset="0%"/><stop stop-opacity="0" offset="100%"/></linearGradient></defs><g fill="none" fill-rule="evenodd"><circle fill="#{{ background }}" cx="512" cy="512" r="512"/><path d="M449.5332 277.3333c150.3985 0 308.5196 30.933 424.0598 98.7937 15.5731 8.8106 26.389 22.1225 26.389 46.5062 0 27.9037-22.4424 47.9782-48.2981 47.9782-10.432 0-16.6185-2.5386-26.3891-7.8933-92.671-55.5727-236.5843-86.1858-375.5696-86.1858-69.418 0-139.9453 7.0613-204.5206 24.5971-7.4453 1.8773-16.8318 5.5893-26.261 5.5893-27.3065 0-48.277-21.6104-48.277-48.9168 0-27.8184 17.2372-43.4343 35.8397-48.9382 72.9806-21.5465 154.4518-31.5304 243.0056-31.5304M425.6617 448c134.0146 0 263.656 33.3863 365.6496 94.3777 17.0879 9.792 23.3811 22.2505 23.3811 40.469 0 22.165-17.6425 40.0849-39.9142 40.0849-11.1146 0-18.0905-4.48-25.6424-8.8746-83.2845-49.4288-198.718-82.2605-325.1168-82.2605-64.8313 0-120.7881 9.0879-167.1023 21.3331-9.984 2.752-15.5732 5.696-24.9171 5.696-22.0158 0-39.9996-17.9412-39.9996-40.149 0-21.781 10.5599-36.757 31.8503-42.6662C281.4071 460.2025 340.18 448 425.7257 448m7.0828 170.6667c112.0415 0 211.8805 25.7064 297.8103 77.2045 12.7786 7.4666 20.2878 15.1039 20.2878 34.0264 0 18.4531-15.0185 32.021-31.8503 32.021-8.2773 0-13.9306-2.88-21.6745-7.5946-74.1966-44.885-166.7183-68.5007-264.9147-68.5007-54.7834 0-109.9295 7.0186-161.4917 17.7705-8.3839 1.8133-18.9438 5.056-25.237 5.056-19.4345 0-32.405-15.4452-32.405-32.1704 0-21.5464 12.4158-32.2343 27.861-35.1783 63.2314-14.4212 126.228-22.6344 191.6354-22.6344" fill="#{{ accent }}"/><circle fill="url(#a)" cx="512" cy="512" r="512"/></g></svg>        
         
+        <div class="panel">
+            <div class="inner">
+                <p>Choose your favourite colours below, press download and follow <a href="https://github.com/dhanishgajjar/vscode-icons#how-to-install" target="_blank">these instructions</a> to install for your OS</p>
+            
+                <div class="colour-container">
+                    <p>Background</p>
+                    <color-picker ng-model="background" options="pickerOptions"></color-picker>
+                    <p class="text-muted">#{{ background }}</p>
+                </div>
+                <div class="colour-container">
+                    <p>Accent</p>
+                    <color-picker ng-model="accent" options="pickerOptions"></color-picker>
+                    <p class="text-muted">#{{ accent }}</p>
+                </div>
+
+                <button ng-disabled="generating" ng-click="submit()" class="submit">
+                    {{ generating ? '' : 'Download' }}
+                    <span ng-if="generating" class="loader-inner loader-small ball-pulse">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </span>
+                </button>
+
+                <p class="text-small margin-bot-sm">Created by <a href="http://www.djdmorrison.co.uk" target="_blank">djdmorrison</a> - Code on <a href="https://github.com/djdmorrison/vs-code-icon" target="_blank">GitHub</a></p>
+                <p class="text-small">Made for <a href="https://github.com/dhanishgajjar/vscode-icons" target="_blank">dhanishgajjar/vscode-icons</a></p>
+            </div>
+        </div>
     </div>
 </body>
 

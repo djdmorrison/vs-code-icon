@@ -3,6 +3,22 @@ angular.module("myApp", ['color.picker']).controller("myCtrl", function ($scope,
     $scope.accent = "FFC600";
     $scope.generating = false;
 
+    $scope.icons = [
+        {
+            'id': 'vscode',
+            'name': 'Visual Studio Code',
+            'description': 'code development'
+        },
+        {
+            'id': 'spotify',
+            'name': 'Spotify',
+            'description': 'music'
+        }
+    ];
+    $scope.icon = {
+        'index': 0
+    };
+
     $scope.submit = function () {
         $scope.generating = true;
 
